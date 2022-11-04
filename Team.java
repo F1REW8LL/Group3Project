@@ -1,7 +1,7 @@
+import java.util.ArrayList;
 /**
  * This class holds players in their appropriate position when a User adds them to the team and calculates score for the team when full.
  */
-import java.util.ArrayList;
 public class Team
 {
     //declare local attributes of the team object
@@ -13,63 +13,67 @@ public class Team
     private Player desigHit;
     private ArrayList<Player> outField = new ArrayList<Player>;
     private ArrayList<Pitcher> pitchers = new ArrayList<Pitcher>;
-    private double score =0;
+    private double score = 0;
     private Boolean full = false;
-   
-    
-    //Construct a Team object and set score to 0 and full to false.
+
+    /**
+     Creates a team object
+     */
     public Team()
     {
-        score =0;
+        score = 0;
         full = false;
     }
 
     //This function places player in appropriate position and checks if team is full
-    public void addPlayer(Player player1) 
+    public void addPlayer(Player player1)
     {
-        //
+
     }
 
     //this function removes the selected player from the team and sets the full boolean to false
     public void removePlayer(Player player1)
     {
-        //    
+
     }
 
     //This function places pitchers into the array and checks if the team is full
-    public void addPitcher(Pitcher pitcher1) 
+    public void addPitcher(Pitcher pitcher1)
     {
-        //
+        if (pitchers.Size() < 3) // If team size is less than 4
+        {
+            pitchers.add(pitcher1); // Add pitcher to the list
+
+            if (pitchers.Size() == 3) // If team size is 4 after adding pitcher
+                full = true;
+        }
+        else if (pitchers.Size() == 3) // If team size is 4
+        {
+            System.out.println("Maximum amount of pitchers already on team");
+            full = true;
+        }
     }
 
-    //this function removes the selected pithcer from the team and sets the full boolean to false
+    //this function removes the selected pitcher from the team and sets the full boolean to false
     public void removePitcher(Pitcher pitcher1)
     {
-        //    
+        if (pitchers.isEmpty() == FALSE) // If there are pitchers to remove
+        {
+            pitchers.remove(pitcher1); // Remove pitcher from the list
+            full = false;
+        }
     }
 
     //This function gets the score from each player and calculates the team total
     private void calculateScore()
-     {
-        if (full)
-        {
-            double pitchTotal = pitchers.get(0).getPoints() + pitchers.get(1).getPoints() + pitchers.get(2).getPoints() + pitchers.get(3).getPoints();
-            double outTotal = outField.get(0).getPoints() + outField.get(1).getPoints() + outField.get(2).getPoints();
-        
-            score =catcher.getScore() + firstBase.getScore() + secondBase.getScore() + thirdBase.getScore() + shortStop.getScore() + desigHit.getScore() + pitchTotal + outTotal;   
-        }
-        else
-        {
-            system.out.println("error: team not full")
-            score = 0;
-        }
-        
+    {
+        //CALCULATE SCORE
     }
 
-    //This function returns the score to the user 
-    public double getScore() 
+    //This function returns the score to the user
+    public double getScore()
     {
-        return score;    
+        return score;
     }
 
     //this function returns the boolean full
@@ -111,7 +115,6 @@ public class Team
     //This function returns the Outfielder
     public Player[] getOutFields()
     {
-        //needs to be changed to array lists
         return outField;
     }
 
@@ -124,7 +127,6 @@ public class Team
     //This function returns the Pitchers
     public Pitcher[] getPitchers()
     {
-        //needs to be changed to array lists
         return Pitchers;
     }
-}   
+}
