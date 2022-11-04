@@ -85,6 +85,7 @@ public class Player
     public double getPoints()
     {
         //calculate points
+        points = s1 + 2*d1 + 3*t1 + 4*hr + 2*rbis + 2*runs;//might change later
         return points;
     }
 }
