@@ -52,7 +52,8 @@ public class Pitcher
     //This function calculates and returns the number of points the player made based off of the stats
     public double getPoints()
     {
-        //calculate points
+        //caluculate points
+        points = 5 * strikeouts + 2* inningsPitched;//might be changed later
         return points;
     }
 }

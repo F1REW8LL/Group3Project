@@ -5,13 +5,13 @@ public class Player
 {
     private String name;
     private String team;
-    Private String position;
-    Private int singles;
-    Private int doubles;
-    Private int triples;
-    Private int homeRuns;
-    Private int rbis;
-    Private int runs;
+    private String position;
+    private int singles;
+    private int doubles;
+    private int triples;
+    private int homeRuns;
+    private int rbis;
+    private int runs;
     private double points;
 
     public Player (String name1, String t1, String P1, int s1, int d1, int t1, int hr, int rbi, int r)

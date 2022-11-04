@@ -1,6 +1,7 @@
 /**
  * This class holds players in their appropriate position when a User adds them to the team and calculates score for the team when full.
  */
+import java.util.ArrayList;
 public class Team
 {
     //declare local attributes of the team object
@@ -10,15 +11,13 @@ public class Team
     private Player thirdBase;
     private Player shortStop;
     private Player desigHit;
-    private Player[3] outField;
-    private Pitcher[4] pitchers;
+    private ArrayList<Player> outField = new ArrayList<Player>;
+    private ArrayList<Pitcher> pitchers = new ArrayList<Pitcher>;
     private double score =0;
     private Boolean full = false;
    
-    /**
-    Construct a Message object.
-    @param messageText the message text
-    */
+    
+    //Construct a Team object and set score to 0 and full to false.
     public Team()
     {
         score =0;
@@ -52,7 +51,19 @@ public class Team
     //This function gets the score from each player and calculates the team total
     private void calculateScore()
      {
-        //CALCULATE SCORE    
+        if (full)
+        {
+            double pitchTotal = pitchers.get(0).getPoints() + pitchers.get(1).getPoints() + pitchers.get(2).getPoints() + pitchers.get(3).getPoints();
+            double outTotal = outField.get(0).getPoints() + outField.get(1).getPoints() + outField.get(2).getPoints();
+        
+            score =catcher.getScore() + firstBase.getScore() + secondBase.getScore() + thirdBase.getScore() + shortStop.getScore() + desigHit.getScore() + pitchTotal + outTotal;   
+        }
+        else
+        {
+            system.out.println("error: team not full")
+            score = 0;
+        }
+        
     }
 
     //This function returns the score to the user 
@@ -100,6 +111,7 @@ public class Team
     //This function returns the Outfielder
     public Player[] getOutFields()
     {
+        //needs to be changed to array lists
         return outField;
     }
 
@@ -112,6 +124,7 @@ public class Team
     //This function returns the Pitchers
     public Pitcher[] getPitchers()
     {
+        //needs to be changed to array lists
         return Pitchers;
     }
 }   
