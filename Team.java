@@ -53,10 +53,16 @@ public class Team
                     System.out.println("Please remove the current first baseman before adding a new first baseman.");
                 }
             }
-            else if (player1.getPosition() == "thirdbase")
+            else if (player1.getPosition() == "secondbase")
             {
-                if (
-                secondBase = player1;
+                if (secondbase = null)
+                {
+                    secondBase = player1;
+                }
+                else
+                {
+                    System.out.println("Please remove the current second baseman before adding a new second baseman.");
+                }
             }
             else if (player1.getPosition() == "thirdbase")
             {
@@ -71,11 +77,25 @@ public class Team
             }
             else if (player1.getPosition() == "shortstop")
             {
-                thirdBase = player1;
+                if (shortStop = null)
+                {
+                    shortStop = player1;
+                }
+                else
+                {
+                    System.out.println("Please remove the current shortstop before adding a new shortstop.");
+                }
             }
             else if (player1.getPosition() == "designated hitter")
             {
-                desigHit = player1;
+                if (desigHit = null)
+                {
+                    desigHit = player1;
+                }
+                else
+                {
+                    System.out.println("Please remove the current designated hitter before adding a new designated hitter.");
+                }
             }
             else if (player1.getPosition() == "outfielder")
             {
@@ -86,8 +106,7 @@ public class Team
                 else
                 {
                     outField.add(player1);
-                }
-                
+                } 
             }
         }
         else
