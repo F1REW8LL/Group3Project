@@ -25,16 +25,82 @@ public class Team
         full = false;
     }
 
-    //This function places player in appropriate position and checks if team is full
-    public void addPlayer(Player player1)
+      //This function places player in appropriate position and checks if team is full
+    public void addPlayer(Player player1) 
     {
-
+        if (full == false)
+        {
+            // need to add if else checking if each of these positions are null or not before adding
+            if (player1.getPosition() == "catcher")
+            {  
+                catcher = player1;
+            }
+            else if (player1.getPosition() == "firstbase")
+            {
+                firstBase = player1;
+            }
+            else if (player1.getPosition() == "thirdbase")
+            {
+                secondBase = player1;
+            }
+            else if (player1.getPosition() == "shortstop")
+            {
+                thirdBase = player1;
+            }
+            else if (player1.getPosition() == "designated hitter")
+            {
+                desigHit = player1;
+            }
+            else if (player1.getPosition() == "outfielder")
+            {
+                if (outField.size() == 4)
+                {
+                    System.out.println("Outfield is full; please remove a player from outfield before trying to add.");
+                }
+                else
+                {
+                    outField.add(player1);
+                }
+                
+            }
+        }
+        else
+        {
+            System.out.println("Team is full; please remove a player.")
+        }
     }
 
     //this function removes the selected player from the team and sets the full boolean to false
     public void removePlayer(Player player1)
     {
-
+        // need to check that the passed player is the current position holder before deleting
+        // need to first check if the passed player is currently in the team
+        if (player1.getPosition() == "catcher")
+        {
+            catcher = null;
+        }
+        else if (player1.getPosition() == "firstbase")
+        {
+            firstBase = null;
+        }
+        else if (player1.getPosition() == "thirdbase")
+        {
+            secondBase = null;
+        }
+        else if (player1.getPosition() == "shortstop")
+        {
+            thirdBase = null;
+        }
+        else if (player1.getPosition() == "designated hitter")
+        {
+            desigHit = null;
+        }
+        else if (player1.getPosition() == "outfielder")
+        {
+            outField.remove(player1);
+        }
+        
+        full = false;
     }
 
     //This function places pitchers into the array and checks if the team is full
