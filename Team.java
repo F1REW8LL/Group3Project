@@ -11,8 +11,8 @@ public class Team
     private Player thirdBase;
     private Player shortStop;
     private Player desigHit;
-    private ArrayList<Player> outField = new ArrayList<Player>; // 4 outfielders
-    private ArrayList<Pitcher> pitchers = new ArrayList<Pitcher>; // 3 pitchers
+    private ArrayList<Player> outField = new ArrayList<Player>; // 3 outfielders
+    private ArrayList<Pitcher> pitchers = new ArrayList<Pitcher>; // 4 pitchers
     private double score = 0;
     private Boolean full = false;
 
@@ -32,16 +32,42 @@ public class Team
         {
             // need to add if else checking if each of these positions are null or not before adding
             if (player1.getPosition() == "catcher")
-            {  
-                catcher = player1;
+            {
+                if (catcher = null)
+                {
+                    catcher = player1;
+                }
+                else
+                {
+                    System.out.println("Please remove the current catcher before adding a new catcher.");
+                }
             }
             else if (player1.getPosition() == "firstbase")
             {
-                firstBase = player1;
+                if (firstbase = null)
+                {
+                    firstBase = player1;
+                }
+                else
+                {
+                    System.out.println("Please remove the current first baseman before adding a new first baseman.");
+                }
             }
             else if (player1.getPosition() == "thirdbase")
             {
+                if (
                 secondBase = player1;
+            }
+            else if (player1.getPosition() == "thirdbase")
+            {
+                if (thirdBase = null)
+                {
+                    thirdBase = player1;
+                }
+                else
+                {
+                    System.out.println("Please remove the current third baseman before adding a new third baseman.");
+                }
             }
             else if (player1.getPosition() == "shortstop")
             {
@@ -178,8 +204,8 @@ public class Team
         return shortStop;
     }
 
-    //This function returns the Outfielder
-    public Player[] getOutFields()
+    //This function returns the Outfielders
+    public ArrayList<Player> getOutFields()
     {
         return outField;
     }
@@ -191,7 +217,7 @@ public class Team
     }
 
     //This function returns the Pitchers
-    public Pitcher[] getPitchers()
+    public ArrayList<Pitcher> getPitchers()
     {
         return pitchers;
     }
