@@ -11,8 +11,8 @@ public class Team
     private Player thirdBase;
     private Player shortStop;
     private Player desigHit;
-    private ArrayList<Player> outField = new ArrayList<Player>;
-    private ArrayList<Pitcher> pitchers = new ArrayList<Pitcher>;
+    private ArrayList<Player> outField = new ArrayList<Player>; // 4 outfielders
+    private ArrayList<Pitcher> pitchers = new ArrayList<Pitcher>; // 3 pitchers
     private double score = 0;
     private Boolean full = false;
 
