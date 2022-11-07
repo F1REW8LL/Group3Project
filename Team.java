@@ -33,7 +33,7 @@ public class Team
             // need to add if else checking if each of these positions are null or not before adding
             if (player1.getPosition() == "catcher")
             {
-                if (catcher = null)
+                if (catcher == null)
                 {
                     catcher = player1;
                 }
@@ -44,7 +44,7 @@ public class Team
             }
             else if (player1.getPosition() == "firstbase")
             {
-                if (firstbase = null)
+                if (firstbase == null)
                 {
                     firstBase = player1;
                 }
@@ -55,7 +55,7 @@ public class Team
             }
             else if (player1.getPosition() == "secondbase")
             {
-                if (secondbase = null)
+                if (secondbase == null)
                 {
                     secondBase = player1;
                 }
@@ -66,7 +66,7 @@ public class Team
             }
             else if (player1.getPosition() == "thirdbase")
             {
-                if (thirdBase = null)
+                if (thirdBase == null)
                 {
                     thirdBase = player1;
                 }
@@ -77,7 +77,7 @@ public class Team
             }
             else if (player1.getPosition() == "shortstop")
             {
-                if (shortStop = null)
+                if (shortStop == null)
                 {
                     shortStop = player1;
                 }
@@ -88,7 +88,7 @@ public class Team
             }
             else if (player1.getPosition() == "designated hitter")
             {
-                if (desigHit = null)
+                if (desigHit == null)
                 {
                     desigHit = player1;
                 }
