@@ -193,6 +193,6 @@ public class Team
     //This function returns the Pitchers
     public Pitcher[] getPitchers()
     {
-        return Pitchers;
+        return pitchers;
     }
 }
