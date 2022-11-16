@@ -179,6 +179,18 @@ public class Team
     private void calculateScore()
     {
         //CALCULATE SCORE
+        if (full)
+        {
+            double pitchTotal = pitchers.get(0).getPoints() + pitchers.get(1).getPoints() + pitchers.get(2).getPoints() + pitchers.get(3).getPoints();
+            double outTotal = outField.get(0).getPoints() + outField.get(1).getPoints() + outField.get(2).getPoints();
+
+            score =catcher.getScore() + firstBase.getScore() + secondBase.getScore() + thirdBase.getScore() + shortStop.getScore() + desigHit.getScore() + pitchTotal + outTotal;   
+        }
+        else
+        {
+            system.out.println("error: team not full")
+            score = 0;
+        }
     }
 
     //This function returns the score to the user
