@@ -10,13 +10,13 @@ public class Pitcher
     private int strikeouts;
 
     
-    public Pitcher(String name1, String t1, String P1, double ip, int K)
+    public Pitcher(String name1, String t1, String P1, double ip, int so)
     {
         name = name1;
         team = t1;
         position = p1;
         inningsPitched = ip;
-        strikeouts = K;
+        strikeouts = so;
     }
     
     //This function returns the Pitcher's name
