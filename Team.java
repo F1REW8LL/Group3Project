@@ -188,7 +188,7 @@ public class Team
         }
         else
         {
-            system.out.println("error: team not full")
+            system.out.println("error: team not full");
             score = 0;
         }
     }
