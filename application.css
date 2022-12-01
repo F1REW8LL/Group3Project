@@ -1,96 +1,97 @@
 .text {
-	-fx-text-fill: #2874A6;
-	-fx-text-alignment: center;
-	-fx-font-family: "Century Gothic";
-	-fx-font-smoothing-type: lcd;
+  -fx-text-fill: #2874A6;
+  -fx-text-alignment: center;
+  -fx-font-family: "Century Gothic";
+  -fx-font-smoothing-type: lcd;
 }
 
 HBox, VBox {
-	-fx-alignment: center;
-	-fx-padding: 10;
+  -fx-alignment: center;
+  -fx-padding: 10;
 }
 
 .button {
-	-fx-background-color: linear-gradient(D1F2EB, C0E4FC);
-	-fx-font-weight: bold;
-	-fx-text-fill: #2874A6;
-	-fx-background-radius: 15;
-	-fx-min-width: 150;
-	-fx-padding: 10, 10, 10, 10;
-	-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7) , 10,0,0,1 );
+  -fx-background-color: linear-gradient(D1F2EB, C0E4FC);
+  -fx-font-weight: bold;
+  -fx-text-fill: #2874A6;
+  -fx-background-radius: 15;
+  -fx-min-width: 150;
+  -fx-padding: 10, 10, 10, 10;
+  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7) , 10,0,0,1 );
 }
 
 .button:hover {
-	-fx-background-color: linear-gradient(E8F8F5, CAF1FF);
+  -fx-background-color: linear-gradient(E8F8F5, CAF1FF);
 }
 
 .button:pressed {
-	-fx-scale-x: 0.9;
-	-fx-scale-y: 0.9;
+  -fx-scale-x: 0.9;
+  -fx-scale-y: 0.9;
 }
 
 .choice-box {
-	-fx-background-color: linear-gradient(D1F2EB, C0E4FC);
-	-fx-focus-color: #5DADE2;
-	-fx-border-radius: 30px;
-	-fx-background-radius: 15;
-	-fx-min-width: 150;
-	-fx-padding: 10, 10, 10, 10;
-	-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7) , 10,0,0,1 );
+  -fx-background-color: linear-gradient(D1F2EB, C0E4FC);
+  -fx-focus-color: #5DADE2;
+  -fx-border-radius: 30px;
+  -fx-background-radius: 15;
+  -fx-min-width: 150;
+  -fx-padding: 10, 10, 10, 10;
+  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7) , 10,0,0,1 );
 }
 
-.choice-box .text {
-	-fx-text-fill: #2874A6;
+.choice-box .label {
+  -fx-text-fill: #2874A6;
 }
 
 .choice-box:hover {
-	-fx-background-color: #E8F8F5;
+  -fx-background-color: #E8F8F5;
 }
 
 .choice-box:pressed {
-	-fx-scale-x: 0.9;
-	-fx-scale-y: 0.9;
+  -fx-scale-x: 0.9;
+  -fx-scale-y: 0.9;
 }
 
 
 .choice-box .text {
-	-fx-font-weight: bold;
+  -fx-font-weight: bold;
 }
 
 .list-view {
-	-fx-background-color: linear-gradient(to right, #AED6F1, #D1F2EB);
-	-fx-background-radius: 20;
-	-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7) , 10,0,0,1 );
-	-fx-min-width: 300px;
-	-fx-min-height: 500px;
+  -fx-background-color: linear-gradient(to right, #AED6F1, #D1F2EB);
+  -fx-background-radius: 20;
+  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7) , 10,0,0,1 );
+  -fx-min-width: 300px;
+  -fx-min-height: 500px;
+  -fx-padding: 10;
 }
 
 .list-cell, .list-cell::focused {
-	-fx-cell-size: 20;
-	-fx-border-radius: 20;
-	-fx-padding: 10;
+  -fx-cell-size: 20;
+  -fx-border-radius: 20;
+  -fx-padding: 10;
 }
 
 .list-cell:filled:selected:focused {
-	-fx-background-color: transparent;
-	-fx-background-radius: 15;
-	-fx-padding: 10;
+  -fx-background-color: transparent;
+  -fx-background-radius: 15;
+  -fx-padding: 10;
 }
 
 .list-cell:filled:hover:selected:focused {
-	-fx-background-color: black;
-	-fx-background-radius: 15;
-	-fx-padding: 10;
+  -fx-background-color: linear-gradient(to right, #5DADE2, #D1F2EB);
+  -fx-background-radius: 15;
+  -fx-padding: 10;
 }
 
 .list-cell:filled:hover {
-	-fx-background-color: linear-gradient(to right, #85C1E9, #D1F2EB);
-	-fx-padding: 10;
+  -fx-background-color: linear-gradient(to right, #85C1E9, #D1F2EB);
+  -fx-padding: 10;
 }
 
 .list-cell:odd:filled:hover {
-	-fx-background-color: linear-gradient(to right, #85C1E9, #D1F2EB);
-	-fx-padding: 10;
+  -fx-background-color: linear-gradient(to right, #85C1E9, #D1F2EB);
+  -fx-padding: 10;
 }
 
 .scroll-bar:horizontal .track,
@@ -143,20 +144,3 @@ HBox, VBox {
     -fx-background-insets : 2.0, 0.0, 0.0;
     -fx-background-radius : 2.0em;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
