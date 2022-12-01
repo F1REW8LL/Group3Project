@@ -111,15 +111,14 @@ public class Team
         }
         else
         {
-            System.out.println("Team is full; please remove a player.")
+            System.out.println("Team is full; please remove a player.");
+            full = true;
         }
     }
 
     //this function removes the selected player from the team and sets the full boolean to false
     public void removePlayer(Player player1)
     {
-        // need to check that the passed player is the current position holder before deleting
-        // need to first check if the passed player is currently in the team
         if (player1.getPosition() == "catcher")
         {
             catcher = null;
