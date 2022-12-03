@@ -1,3 +1,5 @@
+package application
+
 /**
  *  This File holds pitcher objects that hold data 
  */
@@ -9,7 +11,7 @@ public class Pitcher
     private double inningsPitched;
     private int strikeouts;
 
-    
+    //constructor
     public Pitcher(String name1, String t1, String P1, double ip, int so)
     {
         name = name1;
@@ -49,11 +51,18 @@ public class Pitcher
         return strikeouts;
     }
 
-    //This function calculates and returns the number of points the player made based off of the stats
+    //This function calculates and returns the number of points the player made based off of the statistics
     public double getPoints()
     {
         //caluculate points
-        points = 5 * strikeouts + 2* inningsPitched;//might be changed later
+        points = 5 * strikeouts + 2* inningsPitched;
         return points;
+    }
+    
+    //function to easily format name and points for final display screen
+    public String getNamePoints()
+    {
+        String nameAndPoints = getName() + "     " + getPoints();
+    	return nameAndPoints;
     }
 }
