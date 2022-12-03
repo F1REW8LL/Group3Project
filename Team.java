@@ -1,3 +1,5 @@
+package application;
+
 import java.util.ArrayList;
 /**
  * This class holds players in their appropriate position when a User adds them to the team and calculates score for the team when full.
@@ -30,7 +32,7 @@ public class Team
     {
         if (full == false)
         {
-            // need to add if else checking if each of these positions are null or not before adding
+            // checks if the position is currently full or not
             if (player1.getPosition() == "catcher")
             {
                 if (catcher == null)
@@ -39,7 +41,7 @@ public class Team
                 }
                 else
                 {
-                    System.out.println("Please remove the current catcher before adding a new catcher.");
+                    // System.out.println("Please remove the current catcher before adding a new catcher.");
                 }
             }
             else if (player1.getPosition() == "firstbase")
@@ -50,7 +52,7 @@ public class Team
                 }
                 else
                 {
-                    System.out.println("Please remove the current first baseman before adding a new first baseman.");
+                    // System.out.println("Please remove the current first baseman before adding a new first baseman.");
                 }
             }
             else if (player1.getPosition() == "secondbase")
@@ -61,7 +63,7 @@ public class Team
                 }
                 else
                 {
-                    System.out.println("Please remove the current second baseman before adding a new second baseman.");
+                    // System.out.println("Please remove the current second baseman before adding a new second baseman.");
                 }
             }
             else if (player1.getPosition() == "thirdbase")
@@ -72,7 +74,7 @@ public class Team
                 }
                 else
                 {
-                    System.out.println("Please remove the current third baseman before adding a new third baseman.");
+                    // System.out.println("Please remove the current third baseman before adding a new third baseman.");
                 }
             }
             else if (player1.getPosition() == "shortstop")
@@ -83,7 +85,7 @@ public class Team
                 }
                 else
                 {
-                    System.out.println("Please remove the current shortstop before adding a new shortstop.");
+                    // System.out.println("Please remove the current shortstop before adding a new shortstop.");
                 }
             }
             else if (player1.getPosition() == "designated hitter")
@@ -94,14 +96,14 @@ public class Team
                 }
                 else
                 {
-                    System.out.println("Please remove the current designated hitter before adding a new designated hitter.");
+                    // System.out.println("Please remove the current designated hitter before adding a new designated hitter.");
                 }
             }
             else if (player1.getPosition() == "outfielder")
             {
                 if (outField.size() == 4)
                 {
-                    System.out.println("Outfield is full; please remove a player from outfield before trying to add.");
+                    // System.out.println("Outfield is full; please remove a player from outfield before trying to add.");
                 }
                 else
                 {
@@ -111,14 +113,14 @@ public class Team
         }
         else
         {
-            System.out.println("Team is full; please remove a player.");
-            full = true;
+            // System.out.println("Team is full; please remove a player.");
         }
     }
 
     //this function removes the selected player from the team and sets the full boolean to false
     public void removePlayer(Player player1)
     {
+        // finds player by position and removes that player
         if (player1.getPosition() == "catcher")
         {
             catcher = null;
@@ -150,16 +152,16 @@ public class Team
     //This function places pitchers into the array and checks if the team is full
     public void addPitcher(Pitcher pitcher1)
     {
-        if (pitchers.Size() < 3) // If team size is less than 4
+        if (pitchers.size() < 3) // If team size is less than 4
         {
             pitchers.add(pitcher1); // Add pitcher to the list
 
-            if (pitchers.Size() == 3) // If team size is 4 after adding pitcher
+            if (pitchers.size() == 3) // If team size is 4 after adding pitcher
                 full = true;
         }
-        else if (pitchers.Size() == 3) // If team size is 4
+        else if (pitchers.size() == 3) // If team size is 4
         {
-            System.out.println("Maximum amount of pitchers already on team");
+            // System.out.println("Maximum amount of pitchers already on team");
             full = true;
         }
     }
@@ -183,11 +185,11 @@ public class Team
             double pitchTotal = pitchers.get(0).getPoints() + pitchers.get(1).getPoints() + pitchers.get(2).getPoints() + pitchers.get(3).getPoints();
             double outTotal = outField.get(0).getPoints() + outField.get(1).getPoints() + outField.get(2).getPoints();
 
-            score =catcher.getScore() + firstBase.getScore() + secondBase.getScore() + thirdBase.getScore() + shortStop.getScore() + desigHit.getScore() + pitchTotal + outTotal;   
+            score = catcher.getScore() + firstBase.getScore() + secondBase.getScore() + thirdBase.getScore() + shortStop.getScore() + desigHit.getScore() + pitchTotal + outTotal;   
         }
         else
         {
-            system.out.println("error: team not full");
+            // system.out.println("error: team not full");
             score = 0;
         }
     }
@@ -195,6 +197,7 @@ public class Team
     //This function returns the score to the user
     public double getScore()
     {
+        this.calculateScore();
         return score;
     }
 
