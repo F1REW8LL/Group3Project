@@ -44,29 +44,7 @@ public class Main extends Application {
   
   public static void main(String[] args) {
   
-  	Team myTeam = new Team();
-	
-	List<Player> c = new ArrayList(); // Catchers
-	List<Player> fb = new ArrayList();  // First Base
-	List<Player> sb = new ArrayList(); // Second Base
-	List<Player> tb = new ArrayList(); // Third Base
-	List<Player> st = new ArrayList(); // Short Stop
-	List<Player> dh = new ArrayList(); // Designated Hitter
-	List<Player> ofs = new ArrayList(); // Out field
-	List<Pitcher> itch = new ArrayList(); // Pitcher
-	List<Player> allPlayers = new ArrayList();
-	allPlayers.addAll(c); allPlayers.addAll(fb); allPlayers.addAll(sb); allPlayers.addAll(tb);
-	allPlayers.addAll(st); allPlayers.addAll(dh); allPlayers.addAll(ofs);
-	
-	List<Player> teamArray = new ArrayList();
-	List<Player> batterStatsArray = new ArrayList();
-	List<Pitcher> pitcherStatsArray = new ArrayList();
-	
-	final ObservableList<Player> players = FXCollections.observableList(allPlayers); // Create observable list from array
-	final ObservableList<Pitcher> pitchers = FXCollections.observableList(itch);
-	// final ObservableList<Player> team = FXCollections.observableList();
-	final ObservableList<Player> batterStats = FXCollections.observableList(batterStatsArray);
-	final ObservableList<Pitcher> pitcherStats = FXCollections.observableList(pitcherStatsArray);
+  	
 	
 	//open catcher file
         File file = new File("C:\\Group3Project\\mlb-playe-stats-C (1).xlsx");//file name
@@ -331,13 +309,13 @@ public class Main extends Application {
             Cell rbi = cellIterator.next();
             //create new player with data from row
             Player temp = new Player(name, team, "Designated hitter", hits-doub-trip-homer, doub, trip, homer, rbi, runs);
-            //add player to list of Designeated Hitters
+            //add player to list of Designated Hitters
             dh.add(temp);
         }
 
         //open Pitcher file
         File file8 = new File("C:\\Group3Project\\mlb-playe-stats-P.xlsx");//file name
-        //reate fileStream
+        //Create fileStream
         FileInputStream fis8 = new FileInputStream(file8);
         //open workbook
         XSSFWorkbook wb8 = new XSSFWorkbook(fis8);
@@ -377,9 +355,37 @@ public class Main extends Application {
   
   @Override
   public void start(Stage stage) throws Exception {
-    // Player List
+	Team myTeam = new Team();
+	//  List<Team> myTeam = new ArrayList();
+	List<Player> c = new ArrayList(); // Catchers
+	List<Player> fb = new ArrayList();  // First Base
+	List<Player> sb = new ArrayList(); // Second Base
+	List<Player> tb = new ArrayList(); // Third Base
+	List<Player> st = new ArrayList(); // Short Stop
+	List<Player> dh = new ArrayList(); // Designated Hitter
+	List<Player> ofs = new ArrayList(); // Out field
+	List<Pitcher> itch = new ArrayList(); // Pitcher
+	List<Player> allPlayers = new ArrayList();
+	allPlayers.addAll(c); allPlayers.addAll(fb); allPlayers.addAll(sb); allPlayers.addAll(tb);
+	allPlayers.addAll(st); allPlayers.addAll(dh); allPlayers.addAll(ofs);
+	
+	List<Player> teamArray = new ArrayList();
+	List<Player> batterStatsArray = new ArrayList();
+	List<Pitcher> pitcherStatsArray = new ArrayList();
+	List<Player> teamPlayers = new ArrayList();
+	teamPlayers.add(myTeam.getCatcher()); teamPlayers.add(myTeam.getFirstBase()); teamPlayers.add(myTeam.getSecondBase());
+	teamPlayers.add(myTeam.getThirdBase()); teamPlayers.add(myTeam.getShortStop()); teamPlayers.add(myTeam.getDesigHit());
+	teamPlayers.addAll(myTeam.getOutFields());
+	
+	final ObservableList<Player> players = FXCollections.observableList(allPlayers); // Create observable list from array
+	final ObservableList<Pitcher> pitchers = FXCollections.observableList(itch);
+	final ObservableList<Player> team = FXCollections.observableList(teamPlayers);
+	final ObservableList<Player> batterStats = FXCollections.observableList(batterStatsArray);
+	final ObservableList<Pitcher> pitcherStats = FXCollections.observableList(pitcherStatsArray);
+	  
+	 // Player List
     Text playerListText = new Text("Player List"); // Make text
-    Text playerListColumns = new Text("Position	        Name);
+    Text playerListColumns = new Text("Position	        Name");
     ListView playerList = new ListView(players); // Make a list ***SCOPE ERROR***
     ListView pitcherList = new ListView(pitchers);
     VBox column1 = new VBox(); // Make column 1 of scene1
@@ -399,7 +405,7 @@ public class Main extends Application {
     // Team List
     Text teamListText = new Text("Team List"); 
     Text teamListColumns = new Text("Name            Position");
-    ListView teamList = new ListView(myTeam.getFirstBase, myTeam.getSecondBase, myTeam.getThirdBase, myTeam.getShortStop, myTeam.getOutFields, myTeam.getDesighit);
+    ListView teamList = new ListView(team);
     VBox column3 = new VBox(); // Make column 3 of scene1
     column3.getChildren().addAll(teamListText, teamListColumns, teamList); // Add label and list to column 3
     
@@ -428,7 +434,7 @@ public class Main extends Application {
     // Bottom: Buttons and Points
     Button editButton = new Button("Edit"); // Make buttons
     Button resetButton = new Button("Reset");
-    String points = "Points: " + getPoints();
+    String points = "Points: " + myTeam.getScore();
     Text pointsText = new Text(points);
     
     // Page #2 Layout
@@ -440,7 +446,7 @@ public class Main extends Application {
     
     columns.getChildren().addAll(batterColumn, pitcherColumn); // Add tables and labels to the columns HBox
     layout2.getChildren().addAll(columns, bottomPane); // Add columns to the layout2 VBox
-    
+        
     Scene scene2 = new Scene(layout2, 1000, 700); // Make second scene
     addButton.setOnAction(e -> myTeam.addPlayer(playerList.getSelectionModel().getSelectedItem()));
     removeButton.setOnAction(e -> myTeam.removePlayer(teamList.getSelectionModel().getSelectedItem()));
