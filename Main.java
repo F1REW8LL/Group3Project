@@ -1,8 +1,11 @@
 package application;
 
+import java.util.ArrayList;
+import java.util.List;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.stage.Stage;
@@ -40,9 +43,34 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class Main extends Application {
   
   public static void main(String[] args) {
+  
+  	Team myTeam = new Team();
+	
+	List<Player> c = new ArrayList(); // Catchers
+	List<Player> fb = new ArrayList();  // First Base
+	List<Player> sb = new ArrayList(); // Second Base
+	List<Player> tb = new ArrayList(); // Third Base
+	List<Player> st = new ArrayList(); // Short Stop
+	List<Player> dh = new ArrayList(); // Designated Hitter
+	List<Player> ofs = new ArrayList(); // Out field
+	List<Pitcher> itch = new ArrayList(); // Pitcher
+	List<Player> allPlayers = new ArrayList();
+	allPlayers.addAll(c); allPlayers.addAll(fb); allPlayers.addAll(sb); allPlayers.addAll(tb);
+	allPlayers.addAll(st); allPlayers.addAll(dh); allPlayers.addAll(ofs);
+	
+	List<Player> teamArray = new ArrayList();
+	List<Player> batterStatsArray = new ArrayList();
+	List<Pitcher> pitcherStatsArray = new ArrayList();
+	
+	final ObservableList<Player> players = FXCollections.observableList(allPlayers); // Create observable list from array
+	final ObservableList<Pitcher> pitchers = FXCollections.observableList(itch);
+	// final ObservableList<Player> team = FXCollections.observableList();
+	final ObservableList<Player> batterStats = FXCollections.observableList(batterStatsArray);
+	final ObservableList<Pitcher> pitcherStats = FXCollections.observableList(pitcherStatsArray);
+	
 	//open catcher file
         File file = new File("C:\\Group3Project\\mlb-playe-stats-C (1).xlsx");//file name
-        //reate fileStream
+        //Iterate fileStream
         FileInputStream fis = new FileInputStream(file);
         //open workbook
         XSSFWorkbook wb = new XSSFWorkbook(fis);
@@ -78,27 +106,26 @@ public class Main extends Application {
             c.add(temp);
         }
 
-
         //open first base file
-        File file = new File("C:\\Group3Project\\mlb-playe-stats-1B.xlsx");//file name
-        //reate fileStream
-        FileInputStream fis = new FileInputStream(file);
+        File file2 = new File("C:\\Group3Project\\mlb-playe-stats-1B.xlsx");//file name
+        //Iterate fileStream
+        FileInputStream fis2 = new FileInputStream(file2);
         //open workbook
-        XSSFWorkbook wb = new XSSFWorkbook(fis);
+        XSSFWorkbook wb2 = new XSSFWorkbook(fis2);
         //open sheet
-        XSSFSheet sheet = wb.getSheetAt(0);
+        XSSFSheet sheet2 = wb2.getSheetAt(0);
         //create row iterator to traverse the sheet
-        Iterator<Row> itr = sheet.iterator();
+        Iterator<Row> itr2 = sheet2.iterator();
         //declare variable to hold each row and set equal to title row
-        Row row = itr.next();
+        Row row2 = itr2.next();
 
         //loop through the sheet as long as there is another row
-        while(itr.hasNext())
-        {
+    	while(itr2.hasNext())
+   	{
             //set row equal to next row
-            row = itr.next();
-            //set up cell iterator to check each cell
-            Iterator<Cell> cellIterator = row.cellIterator();
+            row2 = itr2.next();
+       	    //set up cell iterator to check each cell
+            Iterator<Cell> cellIterator = row2.cellIterator();
             //grab relevant variables from the row in the order of the sheet
             Cell name = cellIterator.next();
             Cell team = cellIterator.next();
@@ -115,28 +142,28 @@ public class Main extends Application {
             Player temp = new Player(name, team, "First Base", hits-doub-trip-homer, doub, trip, homer, rbi, runs);
             //add player to list of First Basemen
             fb.add(temp);
-        }
+    	}
 
         //open Second Base file
-        File file = new File("C:\\Group3Project\\mlb-playe-stats-2B.xlsx");//file name
-        //reate fileStream
-        FileInputStream fis = new FileInputStream(file);
-        //open workbook
-        XSSFWorkbook wb = new XSSFWorkbook(fis);
-        //open sheet
-        XSSFSheet sheet = wb.getSheetAt(0);
-        //create row iterator to traverse the sheet
-        Iterator<Row> itr = sheet.iterator();
-        //declare variable to hold each row and set equal to title row
-        Row row = itr.next();
-
-        //loop through the sheet as long as there is another row
-        while(itr.hasNext())
-        {
-            //set row equal to next row
-            row = itr.next();
+    	File file3 = new File("C:\\Group3Project\\mlb-playe-stats-2B.xlsx");//file name
+    	//Iterate fileStream
+    	FileInputStream fis3 = new FileInputStream(file3);
+    	//open workbook
+    	XSSFWorkbook wb3 = new XSSFWorkbook(fis3);
+    	//open sheet
+    	XSSFSheet sheet3 = wb3.getSheetAt(0);
+    	//create row iterator to traverse the sheet
+    	Iterator<Row> itr3 = sheet3.iterator();
+   	//declare variable to hold each row and set equal to title row
+    	Row row3 = itr3.next();
+	
+	//loop through the sheet as long as there is another row
+    	while(itr3.hasNext())
+    	{
+       	    //set row equal to next row
+            row3 = itr3.next();
             //set up cell iterator to check each cell
-            Iterator<Cell> cellIterator = row.cellIterator();
+            Iterator<Cell> cellIterator = row3.cellIterator();
             //grab relevant variables from the row in the order of the sheet
             Cell name = cellIterator.next();
             Cell team = cellIterator.next();
@@ -155,27 +182,26 @@ public class Main extends Application {
             sb.add(temp);
         }
 
-
         //open Third Basemen file
-        File file = new File("C:\\Group3Project\\mlb-playe-stats-3B.xlsx");//file name
-        //reate fileStream
-        FileInputStream fis = new FileInputStream(file);
-        //open workbook
-        XSSFWorkbook wb = new XSSFWorkbook(fis);
-        //open sheet
-        XSSFSheet sheet = wb.getSheetAt(0);
-        //create row iterator to traverse the sheet
-        Iterator<Row> itr = sheet.iterator();
-        //declare variable to hold each row and set equal to title row
-        Row row = itr.next();
+    	File file4 = new File("C:\\Group3Project\\mlb-playe-stats-3B.xlsx");//file name
+    	//Iterate fileStream
+    	FileInputStream fis4 = new FileInputStream(file4);
+    	//open workbook
+    	XSSFWorkbook wb4 = new XSSFWorkbook(fis4);
+    	//open sheet
+    	XSSFSheet sheet4 = wb4.getSheetAt(0);
+    	//create row iterator to traverse the sheet
+   	Iterator<Row> itr4 = sheet4.iterator();
+    	//declare variable to hold each row and set equal to title row
+    	Row row4 = itr4.next();
 
         //loop through the sheet as long as there is another row
-        while(itr.hasNext())
+        while(itr4.hasNext())
         {
             //set row equal to next row
-            row = itr.next();
+            row4 = itr4.next();
             //set up cell iterator to check each cell
-            Iterator<Cell> cellIterator = row.cellIterator();
+            Iterator<Cell> cellIterator = row4.cellIterator();
             //grab relevant variables from the row in the order of the sheet
             Cell name = cellIterator.next();
             Cell team = cellIterator.next();
@@ -195,25 +221,25 @@ public class Main extends Application {
         }
 
         //open Short Stop file
-        File file = new File("C:\\Group3Project\\mlb-playe-stats-SS.xlsx");//file name
-        //reate fileStream
-        FileInputStream fis = new FileInputStream(file);
-        //open workbook
-        XSSFWorkbook wb = new XSSFWorkbook(fis);
-        //open sheet
-        XSSFSheet sheet = wb.getSheetAt(0);
-        //create row iterator to traverse the sheet
-        Iterator<Row> itr = sheet.iterator();
-        //declare variable to hold each row and set equal to title row
-        Row row = itr.next();
+    	File file5 = new File("C:\\Group3Project\\mlb-playe-stats-SS.xlsx");//file name
+    	//Iterate fileStream
+    	FileInputStream fis5 = new FileInputStream(file5);
+    	//open workbook
+    	XSSFWorkbook wb5 = new XSSFWorkbook(fis5);
+    	//open sheet
+    	XSSFSheet sheet5 = wb5.getSheetAt(0);
+    	//create row iterator to traverse the sheet
+    	Iterator<Row> itr5 = sheet5.iterator();
+    	//declare variable to hold each row and set equal to title row
+    	Row row5 = itr5.next();
 
         //loop through the sheet as long as there is another row
-        while(itr.hasNext())
+        while(itr5.hasNext())
         {
             //set row equal to next row
-            row = itr.next();
+            row5 = itr5.next();
             //set up cell iterator to check each cell
-            Iterator<Cell> cellIterator = row.cellIterator();
+            Iterator<Cell> cellIterator = row5.cellIterator();
             //grab relevant variables from the row in the order of the sheet
             Cell name = cellIterator.next();
             Cell team = cellIterator.next();
@@ -234,25 +260,25 @@ public class Main extends Application {
 
 
         //open Out Field file
-        File file = new File("C:\\Group3Project\\mlb-playe-stats-OF.xlsx");//file name
-        //reate fileStream
-        FileInputStream fis = new FileInputStream(file);
-        //open workbook
-        XSSFWorkbook wb = new XSSFWorkbook(fis);
-        //open sheet
-        XSSFSheet sheet = wb.getSheetAt(0);
-        //create row iterator to traverse the sheet
-        Iterator<Row> itr = sheet.iterator();
-        //declare variable to hold each row and set equal to title row
-        Row row = itr.next();
+    	File file6 = new File("C:\\Group3Project\\mlb-playe-stats-OF.xlsx");//file name
+    	//Iterate fileStream
+    	FileInputStream fis6 = new FileInputStream(file6);
+    	//open workbook
+    	XSSFWorkbook wb6 = new XSSFWorkbook(fis6);
+    	//open sheet
+    	XSSFSheet sheet6 = wb6.getSheetAt(0);
+    	//create row iterator to traverse the sheet
+    	Iterator<Row> itr6 = sheet6.iterator();
+    	//declare variable to hold each row and set equal to title row
+    	Row row6 = itr6.next();
 
         //loop through the sheet as long as there is another row
-        while(itr.hasNext())
+        while(itr6.hasNext())
         {
             //set row equal to next row
-            row = itr.next();
+            row6 = itr6.next();
             //set up cell iterator to check each cell
-            Iterator<Cell> cellIterator = row.cellIterator();
+            Iterator<Cell> cellIterator = row6.cellIterator();
             //grab relevant variables from the row in the order of the sheet
             Cell name = cellIterator.next();
             Cell team = cellIterator.next();
@@ -272,25 +298,25 @@ public class Main extends Application {
         }
 
         //open Designated Hitter file
-        File file = new File("C:\\Group3Project\\mlb-playe-stats-DH.xlsx");//file name
+        File file7 = new File("C:\\Group3Project\\mlb-playe-stats-DH.xlsx");//file name
         //reate fileStream
-        FileInputStream fis = new FileInputStream(file);
+        FileInputStream fis7 = new FileInputStream(file7);
         //open workbook
-        XSSFWorkbook wb = new XSSFWorkbook(fis);
+        XSSFWorkbook wb7 = new XSSFWorkbook(fis7);
         //open sheet
-        XSSFSheet sheet = wb.getSheetAt(0);
+        XSSFSheet sheet7 = wb7.getSheetAt(0);
         //create row iterator to traverse the sheet
-        Iterator<Row> itr = sheet.iterator();
+        Iterator<Row> itr7 = sheet7.iterator();
         //declare variable to hold each row and set equal to title row
-        Row row = itr.next();
+        Row row7 = itr7.next();
 
         //loop through the sheet as long as there is another row
-        while(itr.hasNext())
+        while(itr7.hasNext())
         {
             //set row equal to next row
-            row = itr.next();
+            row7 = itr7.next();
             //set up cell iterator to check each cell
-            Iterator<Cell> cellIterator = row.cellIterator();
+            Iterator<Cell> cellIterator = row7.cellIterator();
             //grab relevant variables from the row in the order of the sheet
             Cell name = cellIterator.next();
             Cell team = cellIterator.next();
@@ -310,25 +336,25 @@ public class Main extends Application {
         }
 
         //open Pitcher file
-        File file = new File("C:\\Group3Project\\mlb-playe-stats-P.xlsx");//file name
+        File file8 = new File("C:\\Group3Project\\mlb-playe-stats-P.xlsx");//file name
         //reate fileStream
-        FileInputStream fis = new FileInputStream(file);
+        FileInputStream fis8 = new FileInputStream(file8);
         //open workbook
-        XSSFWorkbook wb = new XSSFWorkbook(fis);
+        XSSFWorkbook wb8 = new XSSFWorkbook(fis8);
         //open sheet
-        XSSFSheet sheet = wb.getSheetAt(0);
+        XSSFSheet sheet8 = wb8.getSheetAt(0);
         //create row iterator to traverse the sheet
-        Iterator<Row> itr = sheet.iterator();
+        Iterator<Row> itr8 = sheet8.iterator();
         //declare variable to hold each row and set equal to title row
-        Row row = itr.next();
+        Row row8 = itr8.next();
 
         //loop through the sheet as long as there is another row
-        while(itr.hasNext())
+        while(itr8.hasNext())
         {
             //set row equal to next row
-            row = itr.next();
+            row8 = itr8.next();
             //set up cell iterator to check each cell
-            Iterator<Cell> cellIterator = row.cellIterator();
+            Iterator<Cell> cellIterator = row8.cellIterator();
             //grab relevant variables from the row in the order of the sheet
             Cell name = cellIterator.next();
             Cell team = cellIterator.next();
@@ -345,9 +371,8 @@ public class Main extends Application {
             Pitcher temp = new Pitcher(name, team, "Pitcher", IP, K);
             //add player to list of Catchers
             itch.add(temp);
-        }
-	  
-    	launch(args);
+     	}
+    launch(args);
   }
   
   ObservableList<Player> players = FXCollections.observableArrayList();
